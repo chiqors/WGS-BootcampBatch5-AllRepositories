@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "validator": "^13.9.0",
+    "yargs": "^17.6.2"
+  },
+  "name": "yargs",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

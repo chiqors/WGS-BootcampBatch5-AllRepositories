@@ -1,0 +1,20 @@
+<%- contentFor('main') %>
+<h1>Contact</h1>
+<table border="2">
+    <tr>
+        <th>Nama</th>
+        <th>Email</th>
+    </tr>
+    <% if (contact.length > 0) { %>
+    <% contact.forEach((item) => { %>
+    <tr>
+        <td><%= item.nama %></td>
+        <td><%= item.email %></td>
+    </tr>
+    <% }) %>
+    <% } else { %>
+    <tr>
+        <td colspan="2">Tidak ada data</td>
+    </tr>
+    <% } %>
+</table>

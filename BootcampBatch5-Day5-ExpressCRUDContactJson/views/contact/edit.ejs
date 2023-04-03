@@ -1,0 +1,36 @@
+<%- contentFor('main') %>
+<h1>Edit Contact</h1>
+<a href="/contact" class="btn btn-primary mb-4">< Kembali</a>
+
+<% if(flashMessage.length > 0) { %>
+<% flashMessage.forEach((item) => { %>
+<% console.log('item: ', item) %>
+<div class="alert alert-<%= item.type %> alert-dismissible fade show" id="alert" role="alert">
+    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <%= item.message %>
+</div>
+<% }) %>
+<% } %>
+
+<% if (contact) { %>
+<form action="/contact?_method=PUT" method="post">
+    <input type="hidden" name="nama_lama" value="<%= contact.nama %>">
+    <div class="form-group">
+        <label for="nama" style="font-weight: bold;">Nama Baru (<%= contact.nama %>)</label> <span class="text-danger">*</span>
+        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" value="<%= contact.nama %>" required>
+    </div>
+    <div class="form-group">
+        <label for="email" style="font-weight: bold;">Email</label> <span class="text-danger">*</span>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" value="<%= contact.email %>" required>
+    </div>
+    <div class="form-group">
+        <label for="notelp" style="font-weight: bold;">No HP</label>
+        <input type="text" class="form-control" id="notelp" name="notelp" placeholder="Masukkan no hp" value="<%= contact.notelp %>">
+    </div>
+    <button type="submit" class="btn btn-warning mt-3">Update</button>
+</form>
+<% } else { %>
+<h3>data contact tidak ditemukan</h3>
+<% } %>

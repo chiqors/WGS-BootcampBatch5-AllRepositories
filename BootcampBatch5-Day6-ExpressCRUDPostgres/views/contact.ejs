@@ -1,0 +1,44 @@
+<%- contentFor('main') %>
+<h1>Contact</h1>
+
+<% if(flashData.length > 0) { %>
+<% flashData.forEach((item) => { %>
+<div class="alert alert-<%= item.type %> alert-dismissible fade show" id="alert" role="alert">
+    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <%= item.message %>
+</div>
+<% }) %>
+<% } %>
+
+<a href="/contact/add" class="btn btn-primary">Add Contact</a>
+<table class="table table-bordered table-striped table-hover" style="margin-top: 20px;">
+    <tr>
+        <th>Nomor</th>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+    <% if (contacts) { %>
+    <% contacts.forEach((item, i) => { %>
+    <tr>
+        <td><%= i+1 %></td>
+        <td><%= item.name %></td>
+        <td><%= item.email %></td>
+        <td class="d-flex flex-row justify-content-around">
+            <a href="/contact/show/<%= item.name %>" class="btn btn-primary">Show</a>
+            <a href="/contact/edit/<%= item.name %>" class="btn btn-warning">Edit</a>
+            <form action="/contact?_method=DELETE" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                <input type="hidden" name="name" value="<%= item.name %>">
+                <input type="submit" name="submit" value="Delete" class="btn btn-danger">
+            </form>
+        </td>
+    </tr>
+    <% }) %>
+    <% } else { %>
+    <tr>
+        <td colspan="2">Tidak ada data</td>
+    </tr>
+    <% } %>
+</table>

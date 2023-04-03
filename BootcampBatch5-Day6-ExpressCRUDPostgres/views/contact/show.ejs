@@ -1,0 +1,14 @@
+<%- contentFor('main') %>
+<h1>Contact</h1>
+<a href="/contact" class="btn btn-primary mb-3">< Kembali</a>
+<% if (contact) { %>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><%= contact.name %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Email: <%= contact.email %></h6>
+        <p class="card-text">Nomor HP: <%= contact.mobile %></p>
+    </div>
+</div>
+<% } else { %>
+<h3>data contact tidak ditemukan</h3>
+<% } %>
